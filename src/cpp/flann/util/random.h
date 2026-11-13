@@ -106,8 +106,8 @@ public:
         size_ = n;
         for (int i = 0; i < size_; ++i) vals_[i] = i;
 
-        std::random_device rd;
-        std::mt19937 g(rd());
+        // Follow seed_random(), as rand_int() and rand_double() already do.
+        std::mt19937 g(static_cast<unsigned int>(std::rand()));
         std::shuffle(vals_.begin(), vals_.end(), g);
 
         counter_ = 0;
